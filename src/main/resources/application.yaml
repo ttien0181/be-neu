@@ -2,17 +2,19 @@ server:
   port: 8080
   servlet:
     context-path: /legal-case-management
+
+spring:
+  servlet:
     multipart:
       enabled: true
-      max-file-size: 10MB
-      max-request-size: 15MB
-spring:
+      max-file-size: 100MB
+      max-request-size: 100MB
   application:
     name: neu
   datasource:
     url: "jdbc:mysql://localhost:3306/legal_case_management"
     username: root
-    password: 1111
+    password: 123456
 
 logging:
   level:
