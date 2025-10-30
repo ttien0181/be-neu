@@ -4,6 +4,7 @@ import com.example.neu.dto.APIResponse;
 import com.example.neu.dto.casefile.CaseFileRequest;
 import com.example.neu.dto.casefile.CaseFileResponse;
 import com.example.neu.service.CaseFileService;
+import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -96,5 +97,32 @@ public class CaseFileController {
         return ResponseEntity.noContent().build();
     }
 
+
+
+    @GetMapping("/download/{caseId}/{fileName}")
+    public ResponseEntity<byte[]> downloadCaseFile(
+            @PathVariable Long caseId,
+            @PathVariable String fileName
+    ) {
+        byte[] fileBytes = caseFileService.downloadCaseFile(caseId, fileName);
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_PDF)
+                .header("Content-Disposition", "attachment; filename=\"" + fileName + "\"")
+                .body(fileBytes);
+    }
+
+
+
+    @GetMapping("/preview/{caseId}/{fileName}")
+    public ResponseEntity<Resource> previewCaseFile(
+            @PathVariable Long caseId,
+            @PathVariable String fileName
+    ) {
+        Resource fileResource = caseFileService.previewCaseFile(caseId, fileName);
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(fileResource);
+    }
 
 }

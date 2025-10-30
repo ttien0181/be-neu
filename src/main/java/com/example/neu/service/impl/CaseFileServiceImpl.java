@@ -14,9 +14,16 @@ import com.example.neu.repository.UserRepository;
 import com.example.neu.service.CaseFileService;
 import com.example.neu.util.ValueMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Service
@@ -69,4 +76,36 @@ public class CaseFileServiceImpl implements CaseFileService {
         }
         caseFileRepository.deleteById(id);
     }
+
+
+    @Override
+    public byte[] downloadCaseFile(Long caseId, String fileName) {
+        try {
+            Path filePath = Paths.get("uploads/files/" + caseId + "/" + fileName);
+
+            if (!Files.exists(filePath)) {
+                throw new CaseFileNotFoundException(caseId);
+            }
+
+            return Files.readAllBytes(filePath);
+
+        } catch (IOException e) {
+            throw new RuntimeException("Error reading file: " + fileName, e);
+        }
+    }
+
+    @Override
+    public Resource previewCaseFile(Long caseId, String fileName) {
+        try {
+            Path filePath = Paths.get("uploads/files/" + caseId + "/" + fileName);
+            if (!Files.exists(filePath)) {
+                throw new CaseFileNotFoundException(caseId);
+            }
+            return new UrlResource(filePath.toUri());
+        } catch (MalformedURLException e) {
+            throw new RuntimeException("Invalid file path: " + fileName, e);
+        }
+    }
+
+
 }

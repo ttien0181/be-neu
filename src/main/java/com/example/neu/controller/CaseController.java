@@ -61,6 +61,4 @@ public class CaseController {
         caseService.deleteCaseById(id);
         return ResponseEntity.noContent().build();
     }
-
-
 }

@@ -25,14 +25,22 @@ public class CaseServiceImpl implements CaseService {
     @Override
     public List<CaseResponse> findAllCases() {
         List<Case> cases = caseRepository.findAll();
-        return ValueMapper.MAPPER.convertToCaseResponseList(cases);
+        List<CaseResponse> caseResponses = new java.util.ArrayList<>(List.of());
+        for(Case caseEntity: cases){
+            CaseResponse caseResponse =  ValueMapper.MAPPER.convertToCaseResponse(caseEntity);
+            caseResponse.setCategoryId(caseEntity.getCategory().getId());
+            caseResponses.add(caseResponse);
+        }
+        return caseResponses;
     }
 
     @Override
     public CaseResponse getCaseById(Long id) {
         Case caseEntity = caseRepository.findById(id)
                 .orElseThrow(() -> new CaseNotFoundException(id));
-        return ValueMapper.MAPPER.convertToCaseResponse(caseEntity);
+        CaseResponse caseResponse =  ValueMapper.MAPPER.convertToCaseResponse(caseEntity);
+        caseResponse.setCategoryId(caseEntity.getCategory().getId());
+        return caseResponse;
     }
 
     @Override
@@ -43,7 +51,9 @@ public class CaseServiceImpl implements CaseService {
         Case caseEntity = ValueMapper.MAPPER.convertToCase(caseRequest);
         caseEntity.setCategory(category);
         caseEntity = caseRepository.save(caseEntity);
-        return ValueMapper.MAPPER.convertToCaseResponse(caseEntity);
+        CaseResponse caseResponse =  ValueMapper.MAPPER.convertToCaseResponse(caseEntity);
+        caseResponse.setCategoryId(category.getId());
+        return caseResponse;
     }
 
     @Override
@@ -62,7 +72,10 @@ public class CaseServiceImpl implements CaseService {
         existing.setCategory(category);
 
         Case saved = caseRepository.save(existing);
-        return ValueMapper.MAPPER.convertToCaseResponse(saved);
+        CaseResponse caseResponse =  ValueMapper.MAPPER.convertToCaseResponse(saved);
+        System.out.println(caseResponse);
+        caseResponse.setCategoryId(category.getId());
+        return caseResponse;
     }
 
     @Override
