@@ -37,11 +37,16 @@ public class SecurityConfig implements WebMvcConfigurer {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf(csrf -> csrf.disable())
+        http
+            .csrf(csrf -> csrf.disable())
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+            .headers(headers -> headers
+                    .frameOptions(frame -> frame.disable()) // ✅ Cho phép hiển thị PDF trong iframe
+            )
             .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
                     .requestMatchers("/api/auth/**").permitAll() // mở cho đăng ký, đăng nhập
+//                    .requestMatchers("/api/casefiles/preview/**").permitAll()
                     // POST/PUT/DELETE categories chỉ ADMIN
                     .requestMatchers(HttpMethod.POST,   "/api/**").hasRole("ADMIN")
                     .requestMatchers(HttpMethod.PUT,    "/api/**").hasRole("ADMIN")

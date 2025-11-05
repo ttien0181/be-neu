@@ -1,7 +1,11 @@
 package com.example.neu.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import java.time.LocalDateTime;
 
 /**
@@ -36,8 +40,12 @@ public class Case {
     private String location;
 
     @Column(name = "created_at", updatable = false)
+    @CreationTimestamp
+
     private LocalDateTime createdAt;
 
+    @UpdateTimestamp
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 }

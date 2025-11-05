@@ -37,6 +37,8 @@ public interface ValueMapper {
     Person convertToPerson(PersonRequest personRequest);
     List<PersonResponse> convertToPersonResponseList(List<Person> persons);
 
+    @Mapping(source = "createdAt", target = "createdAt")
+    @Mapping(source = "updatedAt", target = "updatedAt")
     CaseResponse convertToCaseResponse(Case caseEntity);
     Case convertToCase(CaseRequest caseRequest);
     List<CaseResponse> convertToCaseResponseList(List<Case> cases);

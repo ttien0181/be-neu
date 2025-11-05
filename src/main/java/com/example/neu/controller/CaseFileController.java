@@ -122,7 +122,7 @@ public class CaseFileController {
         Resource fileResource = caseFileService.previewCaseFile(caseId, fileName);
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_PDF)
+//                .header("Content-Disposition", "inline; filename=\"" + fileName + "\"")
                 .body(fileResource);
     }
-
 }

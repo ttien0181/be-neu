@@ -2,6 +2,8 @@ package com.example.neu.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+
 import java.time.LocalDateTime;
 
 /**
@@ -26,6 +28,7 @@ public class CaseCaseTag {
     private CaseTag tag;
 
     @Column(name = "created_at", updatable = false)
+    @CreationTimestamp
     private LocalDateTime createdAt;
 
     public CaseCaseTag(Case caseEntity, CaseTag tag) {

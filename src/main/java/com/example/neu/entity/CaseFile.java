@@ -2,6 +2,8 @@ package com.example.neu.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+
 import java.time.LocalDateTime;
 
 /**
@@ -36,5 +38,6 @@ public class CaseFile {
     private User uploadedBy;
 
     @Column(name = "created_at", updatable = false)
+    @CreationTimestamp
     private LocalDateTime createdAt;
 }
