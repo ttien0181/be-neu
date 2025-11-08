@@ -15,6 +15,19 @@ spring:
     url: "jdbc:mysql://localhost:3306/legal_case_management"
     username: root
     password: 1111
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ttien0181@gmail.com
+    password: hxqt hvmh bjhu jrmw
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
 
 logging:
   level:

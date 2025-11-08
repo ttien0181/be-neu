@@ -44,16 +44,6 @@ public class CaseFileController {
         return ResponseEntity.ok(apiResponse);
     }
 
-//    @PostMapping
-//    ResponseEntity<APIResponse<CaseFileResponse>> create(@RequestBody CaseFileRequest caseFileRequest) {
-//        System.out.println("DEBUG >>> Received CaseFileRequest: " + caseFileRequest);
-//        APIResponse<CaseFileResponse> apiResponse = APIResponse.<CaseFileResponse>builder()
-//                .status(SUCCESS)
-//                .result(caseFileService.createCaseFile(caseFileRequest))
-//                .build();
-//        return ResponseEntity.ok(apiResponse);
-//    }
-
     @PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_OCTET_STREAM_VALUE })
     public ResponseEntity<APIResponse<CaseFileResponse>> uploadCaseFile(
             @RequestParam("file") MultipartFile file,
@@ -96,8 +86,6 @@ public class CaseFileController {
         caseFileService.deleteCaseFile(id);
         return ResponseEntity.noContent().build();
     }
-
-
 
     @GetMapping("/download/{caseId}/{fileName}")
     public ResponseEntity<byte[]> downloadCaseFile(

@@ -12,6 +12,8 @@ import com.example.neu.dto.category.CategoryRequest;
 import com.example.neu.dto.category.CategoryResponse;
 import com.example.neu.dto.person.PersonRequest;
 import com.example.neu.dto.person.PersonResponse;
+import com.example.neu.dto.question.QuestionResponse;
+import com.example.neu.dto.appointment.AppointmentResponse;
 import com.example.neu.entity.*;
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapping;
@@ -72,4 +74,30 @@ public interface ValueMapper {
     AuditLogResponse convertToAuditLogResponse(AuditLog auditLog);
 
     List<AuditLogResponse> convertToAuditLogResponseList(List<AuditLog> auditLogs);
+
+    @Mapping(source = "question.id", target = "id")
+    @Mapping(source = "question.questioner.id", target = "questionerId") // ✅
+    @Mapping(source = "question.questioner.username", target = "questionerName")
+
+    @Mapping(source = "question.lawyer.id", target = "lawyerId") // ✅
+    @Mapping(source = "question.lawyer.name", target = "lawyerName")
+    @Mapping(source = "question.lawyer.role", target = "lawyerRole")
+    @Mapping(source = "question.lawyer.contactInfo", target = "lawyerEmail")
+
+    @Mapping(source = "question.caseEntity.caseName", target = "caseName")
+    QuestionResponse convertToQuestionResponse(Question question);
+
+    List<QuestionResponse> convertToQuestionResponseList(List<Question> questions);
+
+    @Mapping(source = "appointment.id", target = "id")
+    @Mapping(source = "appointment.user.username", target = "userName")
+    @Mapping(source = "appointment.lawyer.name", target = "lawyerName")
+    @Mapping(source = "appointment.lawyer.role", target = "lawyerRole")
+    @Mapping(source = "appointment.lawyer.contactInfo", target = "lawyerEmail")
+    @Mapping(source = "appointment.appointmentTime", target = "appointmentTime", dateFormat = "yyyy-MM-dd HH:mm:ss")
+    @Mapping(source = "appointment.notes", target = "notes")
+    @Mapping(source = "appointment.status", target = "status")
+    AppointmentResponse convertToAppointmentResponse(Appointment appointment);
+
+    List<AppointmentResponse> convertToAppointmentResponseList(List<Appointment> appointments);
 }
