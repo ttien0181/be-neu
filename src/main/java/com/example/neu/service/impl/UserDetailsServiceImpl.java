@@ -25,19 +25,18 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User u = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Not found: " + username));
-
-        String roleUpper = u.getRole().name(); // nếu là enum Role {USER, ADMIN}
-        // nếu trường role là String: String roleUpper = u.getRole().toUpperCase();
-
-        var authorities = List.of(new SimpleGrantedAuthority("ROLE_" + roleUpper));
-
-        return new org.springframework.security.core.userdetails.User(
-                u.getUsername(),
-                u.getPassword(),
-                authorities
-        );
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        System.out.println("🔍 Loading user by email: " + email);
+        return userRepository.findByEmail(email)
+                .map(u -> {
+                    System.out.println("✅ Found user: " + u.getEmail() + " role: " + u.getRole());
+                    var authorities = List.of(new SimpleGrantedAuthority("ROLE_" + u.getRole().name()));
+                    return new org.springframework.security.core.userdetails.User(
+                            u.getEmail(),
+                            u.getPassword(),
+                            authorities
+                    );
+                })
+                .orElseThrow(() -> new UsernameNotFoundException("Not found: " + email));
     }
 }

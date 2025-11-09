@@ -34,34 +34,29 @@ public class AuthController {
     public ResponseEntity<APIResponse<AuthResponse>> login(@RequestBody AuthRequest authRequest) {
         // ✅ Xác thực username & password
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        authRequest.getUsername(),
-                        authRequest.getPassword()
-                )
-        );
+                new UsernamePasswordAuthenticationToken(authRequest.getEmail(), authRequest.getPassword()));
 
         // ✅ Lấy thông tin user từ UserDetails
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         String token = jwtUtil.generateToken(userDetails);
 
         // ✅ Tìm user trong DB để lấy thêm id, email, role
-        User user = userRepository.findByUsername(authRequest.getUsername())
-                .orElseThrow(() -> new RuntimeException("Không tìm thấy người dùng"));
+        User user = userRepository.findByEmail(authRequest.getEmail())
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
-        AuthResponse authResponse = AuthResponse.builder()
+        AuthResponse response = AuthResponse.builder()
                 .token(token)
                 .id(user.getId())
-                .username(user.getUsername())
                 .email(user.getEmail())
+                .username(user.getUsername())
                 .role(user.getRole().name())
                 .build();
 
-        APIResponse<AuthResponse> response = APIResponse.<AuthResponse>builder()
-                .status(SUCCESS)
-                .result(authResponse)
+        APIResponse<AuthResponse> apiResponse = APIResponse.<AuthResponse>builder()
+                .status("SUCCESS")
+                .result(response)
                 .build();
-
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(apiResponse);
     }
 
 
@@ -85,10 +80,11 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<APIResponse<User>> register(@RequestBody RegisterRequest registerRequest) {
-        if (userRepository.findByUsername(registerRequest.getUsername()).isPresent()) {
-            throw new UsernameAlreadyExistsException(registerRequest.getUsername());
+    public ResponseEntity<APIResponse<String>> register(@RequestBody RegisterRequest registerRequest) {
+        if (userRepository.findByEmail(registerRequest.getEmail()).isPresent()) {
+            throw new UsernameAlreadyExistsException("Email already exists");
         }
+
 
         // Verify the code
         boolean isValid = verificationService.verifyCode(
@@ -98,7 +94,7 @@ public class AuthController {
         );
 
         if (!isValid) {
-            APIResponse<User> response = APIResponse.<User>builder()
+            APIResponse<String> response = APIResponse.<String>builder()
                     .status("ERROR")
                     .result(null)
                     .build();
@@ -109,19 +105,21 @@ public class AuthController {
         user.setUsername(registerRequest.getUsername());
         user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
         user.setRole(User.Role.USER);
+        user.setEmail(registerRequest.getEmail());
         userRepository.save(user);
 
-        APIResponse<User> response = APIResponse.<User>builder()
+        APIResponse<String> apiResponse = APIResponse.<String>builder()
                 .status("SUCCESS")
-                .result(user)
+                .result("User registered successfully")
                 .build();
-
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(apiResponse);
     }
 
     @PostMapping("/forgot-password/send-code")
     public ResponseEntity<APIResponse<String>> sendPasswordResetCode(@RequestBody ForgotPasswordRequest request) {
-        User user = userRepository.findByUsername(request.getEmail())
+        System.out.println(request.getEmail());
+        System.out.println(userRepository.findByEmail(request.getEmail()));
+        User user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
         verificationService.generateAndSendVerificationCode(
@@ -153,7 +151,7 @@ public class AuthController {
             return ResponseEntity.badRequest().body(response);
         }
 
-        User user = userRepository.findByUsername(request.getEmail())
+        User user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
         user.setPassword(passwordEncoder.encode(request.getNewPassword()));

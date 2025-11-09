@@ -97,10 +97,10 @@ INSERT INTO case_case_tags (case_id, tag_id) VALUES
 -- =============================
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(255) UNIQUE NOT NULL,
+    username VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     role ENUM('ADMIN', 'USER') NOT NULL,
-    email VARCHAR(255) UNIQUE,
+    email VARCHAR(255) UNIQUE NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
@@ -208,3 +208,5 @@ INSERT INTO appointments (id_user, id_lawyer, appointment_time, notes) VALUES
 (2, 1, DATE_ADD(NOW(), INTERVAL 1 DAY), 'Trao đổi về vụ việc thương mại.'),
 (4, 2, DATE_ADD(NOW(), INTERVAL 2 DAY), 'Tư vấn ly hôn.'),
 (3, 1, DATE_ADD(NOW(), INTERVAL 3 DAY), 'Tư vấn lao động.');
+
+

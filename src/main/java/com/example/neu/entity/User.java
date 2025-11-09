@@ -20,11 +20,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
-    private String username;
+    @Column(nullable = false)
+    private String username; // Username is no longer unique
 
     @Column(unique = true, nullable = false)
-    private String email;
+    private String email; // Email remains unique
 
     @Column(nullable = false)
     private String password;
