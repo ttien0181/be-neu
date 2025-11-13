@@ -40,11 +40,10 @@ public class CategoryController {
 
     @PostMapping
     ResponseEntity<APIResponse<CategoryResponse>> create(@RequestBody CategoryRequest categoryRequest) {
+        var created = categoryService.createCategory(categoryRequest);
         APIResponse<CategoryResponse> apiResponse = APIResponse.<CategoryResponse>builder()
                 .status(SUCCESS)
-                .result(categoryService.createCategory(categoryRequest) != null ?
-                        // convert created Category entity to response via service call to fetch saved DTO
-                        categoryService.getCategoryById(categoryService.createCategory(categoryRequest).getId()) : null)
+                .result(created)
                 .build();
         return ResponseEntity.ok(apiResponse);
     }
