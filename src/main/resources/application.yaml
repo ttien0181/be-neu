@@ -7,19 +7,19 @@ spring:
   servlet:
     multipart:
       enabled: true
-      max-file-size: 100MB
-      max-request-size: 100MB
+      max-file-size: 1000MB
+      max-request-size: 1000MB
   application:
     name: neu
   datasource:
     url: "jdbc:mysql://localhost:3306/legal_case_management"
     username: root
-    password: 1111
+    password: 123456
   mail:
     host: smtp.gmail.com
     port: 587
-    username: ttien0181@gmail.com
-    password: hxqt hvmh bjhu jrmw
+    username: quangdang111104@gmail.com
+    password: glqf cwra hxed lyqu
     properties:
       mail:
         smtp:
