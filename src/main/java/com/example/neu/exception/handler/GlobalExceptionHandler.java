@@ -24,12 +24,10 @@ public class GlobalExceptionHandler {
                 .errorMessage(message)
                 .timestamp(LocalDateTime.now())
                 .build();
-
         APIResponse<ErrorDetail> body = APIResponse.<ErrorDetail>builder()
                 .status(FAILURE)
                 .errors(Collections.singletonList(error))
                 .build();
-
         return ResponseEntity.status(status).body(body);
     }
 
