@@ -52,10 +52,10 @@ public class CaseFileServiceImpl implements CaseFileService {
         Case caseEntity = caseRepository.findById(caseFileRequest.getCaseId())
                 .orElseThrow(() -> new CaseNotFoundException(caseFileRequest.getCaseId()));
 
-        // ✅ Lấy username từ JWT context thay vì FE gửi lên
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UserNotFoundException(username));
+        // ✅ Lấy email từ JWT context thay vì FE gửi lên
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UserNotFoundException(email));
 
         CaseFile caseFile = new CaseFile();
         caseFile.setCaseEntity(caseEntity);
