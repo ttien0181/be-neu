@@ -300,18 +300,18 @@ INSERT INTO verification_codes (email, code, type, expiry_time, used) VALUES
 ('dangdien1223@gmail.com', '789101', 'PASSWORD_RESET', DATE_ADD(NOW(), INTERVAL 5 MINUTE), FALSE),
 ('mai.lawyer@firm.vn', '202020', 'PASSWORD_RESET', DATE_ADD(NOW(), INTERVAL 15 MINUTE), FALSE);
 
--- QUESTIONS
-INSERT INTO questions (id_questioner, id_lawyer, case_id, content, answer) VALUES
-(2, 1, 1, 'Tôi cần tư vấn cách nộp hồ sơ khởi kiện đúng quy định.', 'Bạn cần nộp tại TAND nơi bị đơn cư trú.'),
-(4, 2, 2, 'Ly hôn có bắt buộc hòa giải không?', 'Có, tòa án sẽ tổ chức hòa giải trước khi xét xử.'),
-(3, 1, 3, 'Nếu bị sa thải trái luật, tôi có được bồi thường không?', 'Có, bạn được nhận lương và bồi thường thiệt hại.'),
-(5, 2, 5, 'Tranh chấp đất nên nộp đơn ở đâu?', 'Tại Tòa án nhân dân nơi có bất động sản.'),
-(6, 1, NULL, 'Thời gian xử lý vụ kiện thương mại mất bao lâu?', 'Thông thường từ 2-4 tháng tùy mức độ.');
-
--- APPOINTMENTS
-INSERT INTO appointments (id_user, id_lawyer, appointment_time, notes) VALUES
-(2, 1, DATE_ADD(NOW(), INTERVAL 1 DAY), 'Trao đổi về vụ việc thương mại.'),
-(4, 2, DATE_ADD(NOW(), INTERVAL 2 DAY), 'Tư vấn ly hôn.'),
-(3, 1, DATE_ADD(NOW(), INTERVAL 3 DAY), 'Tư vấn lao động.'),
-(5, 1, DATE_ADD(NOW(), INTERVAL 5 DAY), 'Tư vấn tranh chấp đất.'),
-(6, 2, DATE_ADD(NOW(), INTERVAL 7 DAY), 'Gặp để chuẩn bị hồ sơ bảo vệ thân chủ.');
+---- QUESTIONS
+--INSERT INTO questions (id_questioner, id_lawyer, case_id, content, answer) VALUES
+--(2, 1, 1, 'Tôi cần tư vấn cách nộp hồ sơ khởi kiện đúng quy định.', 'Bạn cần nộp tại TAND nơi bị đơn cư trú.'),
+--(4, 2, 2, 'Ly hôn có bắt buộc hòa giải không?', 'Có, tòa án sẽ tổ chức hòa giải trước khi xét xử.'),
+--(3, 1, 3, 'Nếu bị sa thải trái luật, tôi có được bồi thường không?', 'Có, bạn được nhận lương và bồi thường thiệt hại.'),
+--(5, 2, 5, 'Tranh chấp đất nên nộp đơn ở đâu?', 'Tại Tòa án nhân dân nơi có bất động sản.'),
+--(6, 1, NULL, 'Thời gian xử lý vụ kiện thương mại mất bao lâu?', 'Thông thường từ 2-4 tháng tùy mức độ.');
+--
+---- APPOINTMENTS
+--INSERT INTO appointments (id_user, id_lawyer, appointment_time, notes) VALUES
+--(2, 1, DATE_ADD(NOW(), INTERVAL 1 DAY), 'Trao đổi về vụ việc thương mại.'),
+--(4, 2, DATE_ADD(NOW(), INTERVAL 2 DAY), 'Tư vấn ly hôn.'),
+--(3, 1, DATE_ADD(NOW(), INTERVAL 3 DAY), 'Tư vấn lao động.'),
+--(5, 1, DATE_ADD(NOW(), INTERVAL 5 DAY), 'Tư vấn tranh chấp đất.'),
+--(6, 2, DATE_ADD(NOW(), INTERVAL 7 DAY), 'Gặp để chuẩn bị hồ sơ bảo vệ thân chủ.');
