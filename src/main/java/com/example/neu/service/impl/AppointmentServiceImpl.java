@@ -5,6 +5,7 @@ import com.example.neu.dto.appointment.AppointmentResponse;
 import com.example.neu.entity.Appointment;
 import com.example.neu.entity.Person;
 import com.example.neu.entity.User;
+import com.example.neu.exception.AppointmentPendingException;
 import com.example.neu.exception.UserNotFoundException;
 import com.example.neu.repository.AppointmentRepository;
 import com.example.neu.repository.PersonRepository;
@@ -31,6 +32,15 @@ public class AppointmentServiceImpl implements AppointmentService {
                 .orElseThrow(() -> new UserNotFoundException("User not found"));
         Person lawyer = personRepository.findById(request.getLawyerId())
                 .orElseThrow(() -> new UserNotFoundException("Lawyer not found"));
+
+        // Kiểm tra xem user đã có lịch hẹn PENDING với luật sư này chưa
+        appointmentRepository.findByUserIdAndLawyerIdAndStatus(
+                request.getUserId(),
+                request.getLawyerId(),
+                Appointment.Status.PENDING
+        ).ifPresent(existingAppointment -> {
+            throw new AppointmentPendingException();
+        });
 
         Appointment appointment = Appointment.builder()
                 .user(user)

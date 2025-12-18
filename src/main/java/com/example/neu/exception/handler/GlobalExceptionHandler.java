@@ -65,6 +65,18 @@ public class GlobalExceptionHandler {
         return buildError("data", ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
+    // ⚙️ Question-related exceptions
+    @ExceptionHandler(QuestionTooFrequentException.class)
+    public ResponseEntity<APIResponse<ErrorDetail>> handleQuestionTooFrequent(QuestionTooFrequentException ex) {
+        return buildError("question", ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    // ⚙️ Appointment-related exceptions
+    @ExceptionHandler(AppointmentPendingException.class)
+    public ResponseEntity<APIResponse<ErrorDetail>> handleAppointmentPending(AppointmentPendingException ex) {
+        return buildError("appointment", ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
     // ⚙️ Bắt tất cả lỗi không xác định khác
     @ExceptionHandler(Exception.class)
     public ResponseEntity<APIResponse<ErrorDetail>> handleAll(Exception ex) {

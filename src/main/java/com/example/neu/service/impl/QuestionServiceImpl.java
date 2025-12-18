@@ -2,12 +2,14 @@ package com.example.neu.service.impl;
 
 import com.example.neu.dto.question.*;
 import com.example.neu.entity.*;
+import com.example.neu.exception.QuestionTooFrequentException;
 import com.example.neu.repository.*;
 import com.example.neu.util.ValueMapper;
 import com.example.neu.service.QuestionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -23,6 +25,18 @@ public class QuestionServiceImpl implements QuestionService {
     public QuestionResponse createQuestion(QuestionRequest request) {
         User questioner = userRepository.findById(request.getIdQuestioner())
                 .orElseThrow(() -> new RuntimeException("Người hỏi không tồn tại"));
+
+        // Kiểm tra xem người dùng đã đặt câu hỏi trong vòng 1 ngày chưa
+        questionRepository.findFirstByQuestionerIdOrderByCreatedAtDesc(request.getIdQuestioner())
+                .ifPresent(lastQuestion -> {
+                    LocalDateTime lastQuestionTime = lastQuestion.getCreatedAt();
+                    LocalDateTime now = LocalDateTime.now();
+                    LocalDateTime oneDayAgo = now.minusDays(1);
+                    
+                    if (lastQuestionTime.isAfter(oneDayAgo)) {
+                        throw new QuestionTooFrequentException();
+                    }
+                });
 
         Person lawyer = null;
         if (request.getIdLawyerPerson() != null) {
