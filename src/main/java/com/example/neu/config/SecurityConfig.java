@@ -56,8 +56,8 @@ public class SecurityConfig implements WebMvcConfigurer {
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         // Các API liên quan đến đăng nhập / đăng ký được truy cập công khai
                         .requestMatchers("/api/auth/**").permitAll()
-//                        .requestMatchers("/api/questions/**").permitAll()
-//                        .requestMatchers("/api/appointments/**").permitAll()
+                        .requestMatchers("/api/questions/**").permitAll()
+                        .requestMatchers("/api/appointments/**").permitAll()
                         // Chỉ ADMIN mới có quyền POST/PUT/DELETE
                         .requestMatchers(HttpMethod.POST, "/api/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/api/**").hasRole("ADMIN")
