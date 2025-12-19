@@ -176,11 +176,11 @@ INSERT INTO cases (category_id, case_name, case_description, status, court_name,
 (2, 'Ly hôn giữa Nguyễn Văn An và Trần Thị Bình', 'Tranh chấp quyền nuôi con và tài sản.', 'Đã giải quyết', 'TAND Quận 1', 'TP. Hồ Chí Minh', '2025-01-15', '2025-01-20'),
 (3, 'Nguyễn Văn Dũng kiện Công ty TNHH XYZ', 'Chấm dứt hợp đồng lao động trái luật.', 'Đang thụ lý', 'TAND TP. Đà Nẵng', 'Đà Nẵng', '2025-01-25', '2025-01-30'),
 (4, 'Người dân kiện UBND quận về quyết định hành chính sai phạm', 'Tranh chấp hành chính.', 'Đang xét xử', 'TAND TP. Hải Phòng', 'Hải Phòng', '2025-02-02', '2025-02-05'),
-(5, 'Tranh chấp đất giữa ông Trần và bà Lê', 'Mâu thuẫn quyền sử dụng đất tại quận 9.', 'Đang hòa giải', 'TAND TP. Hồ Chí Minh', 'TP. Hồ Chí Minh', '2025-02-10', '2025-02-15'),
+(5, 'Tranh chấp đất giữa ông Trần và bà Lê', 'Mâu thuẫn quyền sử dụng đất tại quận 9.', 'Đang thụ lý', 'TAND TP. Hồ Chí Minh', 'TP. Hồ Chí Minh', '2025-02-10', '2025-02-15'),
 (6, 'Công ty ABC kiện xâm phạm nhãn hiệu', 'Công ty DEF sử dụng logo tương tự gây nhầm lẫn thương hiệu.', 'Đang thụ lý', 'TAND TP. Hà Nội', 'Hà Nội', '2025-02-20', '2025-02-25'),
-(7, 'Tranh chấp cổ phần giữa các thành viên Công ty TNHH Minh Phát', 'Một thành viên không góp đủ vốn như cam kết.', 'Đang hòa giải', 'TAND TP. Hồ Chí Minh', 'TP. Hồ Chí Minh', '2025-03-01', '2025-03-05'),
+(7, 'Tranh chấp cổ phần giữa các thành viên Công ty TNHH Minh Phát', 'Một thành viên không góp đủ vốn như cam kết.', 'Đang thụ lý', 'TAND TP. Hồ Chí Minh', 'TP. Hồ Chí Minh', '2025-03-01', '2025-03-05'),
 (3, 'Nhân viên kiện công ty vì không đóng bảo hiểm xã hội', 'Công ty chậm nộp và không thực hiện đầy đủ nghĩa vụ bảo hiểm.', 'Đang xét xử', 'TAND TP. Đà Nẵng', 'Đà Nẵng', '2025-03-10', '2025-03-15'),
-(5, 'Tranh chấp ranh giới đất tại phường Trung Hòa', 'Hai hộ dân tranh chấp phần đất 30m² chưa có sổ đỏ.', 'Đang hòa giải', 'TAND Quận Cầu Giấy', 'Hà Nội', '2025-03-20', '2025-03-25'),
+(5, 'Tranh chấp ranh giới đất tại phường Trung Hòa', 'Hai hộ dân tranh chấp phần đất 30m² chưa có sổ đỏ.', 'Đang thụ lý', 'TAND Quận Cầu Giấy', 'Hà Nội', '2025-03-20', '2025-03-25'),
 (4, 'Khiếu kiện quyết định thu hồi đất sai phạm', 'Công dân cho rằng UBND quận ra quyết định thu hồi không đúng trình tự.', 'Đang thụ lý', 'TAND TP. Hải Phòng', 'Hải Phòng', '2025-04-01', '2025-04-05'),
 (2, 'Ly hôn giữa ông Trần và bà Lê', 'Tranh chấp quyền nuôi con sau ly hôn.', 'Đang xét xử', 'TAND Quận 3', 'TP. Hồ Chí Minh', '2025-04-10', '2025-04-15'),
 (1, 'Doanh nghiệp X yêu cầu bồi thường hợp đồng thuê kho', 'Bên thuê không thanh toán đúng hạn theo hợp đồng.', 'Đã giải quyết', 'TAND TP. Cần Thơ', 'Cần Thơ', '2025-04-20', '2025-04-25'),
@@ -188,17 +188,17 @@ INSERT INTO cases (category_id, case_name, case_description, status, court_name,
 (7, 'Tranh chấp quyền điều hành trong công ty cổ phần ABC', 'Các cổ đông mâu thuẫn về quyền biểu quyết trong Đại hội đồng cổ đông.', 'Đang xét xử', 'TAND TP. Hồ Chí Minh', 'TP. Hồ Chí Minh', '2025-05-10', '2025-05-15'),
 (3, 'Người lao động kiện công ty vì sa thải trái pháp luật', 'Công ty không tuân thủ quy trình xử lý kỷ luật lao động.', 'Đã giải quyết', 'TAND TP. Đà Nẵng', 'Đà Nẵng', '2025-05-20', '2025-05-25'),
 (5, 'Tranh chấp bồi thường khi Nhà nước thu hồi đất', 'Người dân yêu cầu mức bồi thường cao hơn do giá thị trường tăng.', 'Đang thụ lý', 'TAND TP. Hà Nội', 'Hà Nội', '2025-06-01', '2025-06-05'),
-(1, 'Công ty xây dựng kiện đối tác vì chậm thanh toán', 'Bên thuê dịch vụ không thanh toán đúng thời hạn hợp đồng.', 'Đang hòa giải', 'TAND TP. Hải Dương', 'Hải Dương', '2025-06-10', '2025-06-15'),
+(1, 'Công ty xây dựng kiện đối tác vì chậm thanh toán', 'Bên thuê dịch vụ không thanh toán đúng thời hạn hợp đồng.', 'Đang thụ lý', 'TAND TP. Hải Dương', 'Hải Dương', '2025-06-10', '2025-06-15'),
 (4, 'Công dân khởi kiện quyết định xử phạt hành chính sai', 'Quyết định xử phạt hành vi vi phạm giao thông được cho là không hợp lý.', 'Đã giải quyết', 'TAND Quận Long Biên', 'Hà Nội', '2025-06-20', '2025-06-25'),
 (2, 'Ly hôn giữa bà Nguyễn và ông Phạm', 'Hai bên không thống nhất phân chia tài sản chung.', 'Đang xét xử', 'TAND TP. Đà Nẵng', 'Đà Nẵng', '2025-07-01', '2025-07-05'),
 (7, 'Cổ đông nhỏ lẻ kiện công ty vì không chia cổ tức', 'Công ty không thực hiện nghĩa vụ chia cổ tức theo quy định.', 'Đang thụ lý', 'TAND TP. Hồ Chí Minh', 'TP. Hồ Chí Minh', '2025-07-10', '2025-07-15'),
 (6, 'Nhà phát minh kiện công ty vi phạm sáng chế', 'Công ty sử dụng sáng chế khi chưa được cấp phép.', 'Đang xét xử', 'TAND TP. Hà Nội', 'Hà Nội', '2025-07-20', '2025-07-25'),
-(1, 'Công ty TNHH Thiên Phú yêu cầu hủy hợp đồng thương mại', 'Bên đối tác vi phạm điều khoản về chất lượng hàng hóa.', 'Đang hòa giải', 'TAND TP. Biên Hòa', 'Đồng Nai', '2025-08-01', '2025-08-05'),
+(1, 'Công ty TNHH Thiên Phú yêu cầu hủy hợp đồng thương mại', 'Bên đối tác vi phạm điều khoản về chất lượng hàng hóa.', 'Đang thụ lý', 'TAND TP. Biên Hòa', 'Đồng Nai', '2025-08-01', '2025-08-05'),
 (3, 'Nhân viên yêu cầu trả lương làm thêm giờ', 'Công ty không thanh toán tiền làm thêm theo quy định.', 'Đang xét xử', 'TAND TP. Cần Thơ', 'Cần Thơ', '2025-08-10', '2025-08-15'),
 (5, 'Tranh chấp thừa kế quyền sử dụng đất tại quận 7', 'Các đồng thừa kế không thống nhất phân chia quyền sử dụng đất.', 'Đã giải quyết', 'TAND TP. Hồ Chí Minh', 'TP. Hồ Chí Minh', '2025-08-20', '2025-08-25'),
 (4, 'Doanh nghiệp khiếu kiện về quyết định thuế không hợp lý', 'Công ty cho rằng cơ quan thuế tính sai số tiền thuế phải nộp.', 'Đang thụ lý', 'TAND TP. Hải Phòng', 'Hải Phòng', '2025-09-01', '2025-09-05'),
 (8, 'Tranh chấp hợp đồng vay tài sản giữa cá nhân', 'Hai bên ký kết hợp đồng vay nhưng bên vay không hoàn trả đúng hạn.', 'Đang xét xử', 'TAND Quận Ba Đình', 'Hà Nội', '2025-09-10', '2025-09-15'),
-(8, 'Yêu cầu bồi thường thiệt hại do tai nạn giao thông', 'Nguyên đơn yêu cầu bồi thường chi phí sửa chữa và điều trị.', 'Đang hòa giải', 'TAND TP. Hồ Chí Minh', 'TP. Hồ Chí Minh', '2025-09-20', '2025-09-25'),
+(8, 'Yêu cầu bồi thường thiệt hại do tai nạn giao thông', 'Nguyên đơn yêu cầu bồi thường chi phí sửa chữa và điều trị.', 'Đang thụ lý', 'TAND TP. Hồ Chí Minh', 'TP. Hồ Chí Minh', '2025-09-20', '2025-09-25'),
 (8, 'Tranh chấp thừa kế nhà đất tại Hà Đông', 'Các đồng thừa kế không thống nhất về việc chia tài sản.', 'Đang thụ lý', 'TAND Quận Hà Đông', 'Hà Nội', '2025-10-01', '2025-10-05'),
 (8, 'Tranh chấp quyền sở hữu xe ô tô mua chung', 'Hai cá nhân cùng góp tiền mua xe, nay phát sinh tranh chấp quyền sở hữu.', 'Đang xét xử', 'TAND TP. Đà Nẵng', 'Đà Nẵng', '2025-10-10', '2025-10-15'),
 (8, 'Yêu cầu tuyên bố hợp đồng mua bán vô hiệu', 'Hợp đồng được ký kết khi một bên không đủ năng lực hành vi dân sự.', 'Đã giải quyết', 'TAND TP. Hải Phòng', 'Hải Phòng', '2025-10-20', '2025-10-25'),
@@ -206,7 +206,7 @@ INSERT INTO cases (category_id, case_name, case_description, status, court_name,
 (9, 'Vụ án cố ý gây thương tích', 'Bị cáo đánh người gây thương tật 15%.', 'Đang thụ lý', 'TAND TP. Hà Nội', 'Hà Nội', '2025-11-03', '2025-11-05'),
 (9, 'Vụ án lừa đảo chiếm đoạt tài sản qua mạng', 'Bị cáo sử dụng mạng xã hội để lừa chuyển tiền.', 'Đang thụ lý', 'TAND TP. Đà Nẵng', 'Đà Nẵng', '2025-11-06', '2025-11-08'),
 (9, 'Vụ án tàng trữ trái phép chất ma túy', 'Bị cáo bị bắt khi mang theo 5g ma túy tổng hợp.', 'Đang xét xử', 'TAND TP. Hải Phòng', 'Hải Phòng', '2025-11-09', '2025-11-10'),
-(9, 'Vụ án đánh bạc qua mạng Internet', 'Nhiều đối tượng tổ chức đánh bạc qua ứng dụng di động.', 'Đang hòa giải', 'TAND TP. Cần Thơ', 'Cần Thơ', '2025-11-09', '2025-11-10');
+(9, 'Vụ án đánh bạc qua mạng Internet', 'Nhiều đối tượng tổ chức đánh bạc qua ứng dụng di động.', 'Đang thụ lý', 'TAND TP. Cần Thơ', 'Cần Thơ', '2025-11-09', '2025-11-10');
 
 
 -- PERSONS
@@ -300,18 +300,4 @@ INSERT INTO verification_codes (email, code, type, expiry_time, used) VALUES
 ('dangdien1223@gmail.com', '789101', 'PASSWORD_RESET', DATE_ADD(NOW(), INTERVAL 5 MINUTE), FALSE),
 ('mai.lawyer@firm.vn', '202020', 'PASSWORD_RESET', DATE_ADD(NOW(), INTERVAL 15 MINUTE), FALSE);
 
----- QUESTIONS
---INSERT INTO questions (id_questioner, id_lawyer, case_id, content, answer) VALUES
---(2, 1, 1, 'Tôi cần tư vấn cách nộp hồ sơ khởi kiện đúng quy định.', 'Bạn cần nộp tại TAND nơi bị đơn cư trú.'),
---(4, 2, 2, 'Ly hôn có bắt buộc hòa giải không?', 'Có, tòa án sẽ tổ chức hòa giải trước khi xét xử.'),
---(3, 1, 3, 'Nếu bị sa thải trái luật, tôi có được bồi thường không?', 'Có, bạn được nhận lương và bồi thường thiệt hại.'),
---(5, 2, 5, 'Tranh chấp đất nên nộp đơn ở đâu?', 'Tại Tòa án nhân dân nơi có bất động sản.'),
---(6, 1, NULL, 'Thời gian xử lý vụ kiện thương mại mất bao lâu?', 'Thông thường từ 2-4 tháng tùy mức độ.');
---
----- APPOINTMENTS
---INSERT INTO appointments (id_user, id_lawyer, appointment_time, notes) VALUES
---(2, 1, DATE_ADD(NOW(), INTERVAL 1 DAY), 'Trao đổi về vụ việc thương mại.'),
---(4, 2, DATE_ADD(NOW(), INTERVAL 2 DAY), 'Tư vấn ly hôn.'),
---(3, 1, DATE_ADD(NOW(), INTERVAL 3 DAY), 'Tư vấn lao động.'),
---(5, 1, DATE_ADD(NOW(), INTERVAL 5 DAY), 'Tư vấn tranh chấp đất.'),
---(6, 2, DATE_ADD(NOW(), INTERVAL 7 DAY), 'Gặp để chuẩn bị hồ sơ bảo vệ thân chủ.');
+
